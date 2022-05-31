@@ -21,11 +21,12 @@ for (let i = 0; i < timeblock.length; i++) {
     $(".timeblock").append(saveButton);    
 
 
-    // var and statment to assign color based on past, present, future
+    // converted string to number
     var newTime = parseInt(timeblock[i].slice(0,timeblock[i].length -2));
     if (newTime >= 1 && newTime <= 5) {
         newTime += 12;
-    }        
+    }    
+    // var and statment to assign color based on past, present, future (used color class from CSS)  
     if (newTime === currentHour) {
         $(".edit-cont"+counter).addClass("present");
         console.log("in past")
@@ -37,6 +38,7 @@ for (let i = 0; i < timeblock.length; i++) {
     counter ++;
 };
 
+// linked function to save button and store value
 $("button").click(function () {
     $("input").each(function() {    
        var id = $(this).attr('id');
@@ -44,7 +46,7 @@ $("button").click(function () {
       localStorage.setItem(id, value);
    }); 
 });
-
+// saves and retrieves stored value
 $(document).ready(function() {
     $('input').each(function(){    
         var id = $(this).attr('id');
@@ -56,22 +58,3 @@ $(document).ready(function() {
 });
 
 
-
-
-
-
-// var input = document.getElementsByClassName("edit-cont").value;
-// localStorage.getItem("saveBtn");
-
-
-
-// function submit() {
-//     var names = document.getElementById("names").value;
-//     var allNames = JSON.parse(localStorage.getItem("allNames")) || [];
-//     allNames.push(names);
-//     localStorage.setItem("allNames", JSON.stringify(allNames));
-//     document.getElementById("names").value = '';
-//     document.getElementById("namesList").innerHTML = localStorage.getItem("allNames");
-//   }
-  
-//   document.getElementById("namesList").innerHTML = localStorage.getItem("allNames");
